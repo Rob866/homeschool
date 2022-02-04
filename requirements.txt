@@ -6,11 +6,26 @@
 #
 asgiref==3.5.0
     # via django
+dj-database-url==0.5.0
+    # via django-heroku
 django==3.2.1
+    # via
+    #   -r requirements.in
+    #   django-heroku
+django-heroku==0.3.1
     # via -r requirements.in
+gunicorn==20.1.0
+    # via -r requirements.in
+psycopg2==2.9.3
+    # via django-heroku
 pytz==2021.3
     # via django
 sqlparse==0.4.2
     # via django
 typing-extensions==4.0.1
     # via asgiref
+whitenoise==5.3.0
+    # via django-heroku
+
+# The following packages are considered to be unsafe in a requirements file:
+# setuptools
