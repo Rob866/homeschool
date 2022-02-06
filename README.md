@@ -1,1 +1,1 @@
-Home scchool app
+Home school app
