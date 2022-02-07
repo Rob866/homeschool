@@ -11,7 +11,10 @@ dj-database-url==0.5.0
 django==3.2.12
     # via
     #   -r requirements.in
+    #   django-debug-toolbar
     #   django-heroku
+django-debug-toolbar==3.2.4
+    # via -r requirements.in
 django-environ==0.8.1
     # via -r requirements.in
 django-heroku==0.3.1
@@ -23,7 +26,9 @@ psycopg2==2.9.3
 pytz==2021.3
     # via django
 sqlparse==0.4.2
-    # via django
+    # via
+    #   django
+    #   django-debug-toolbar
 typing-extensions==4.0.1
     # via asgiref
 whitenoise==5.3.0
