@@ -1,4 +1,5 @@
 factory-boy
+django-test-plus==2.2.0 
 flake8==4.0.1
 isort==5.10.1 
 pip-tools
