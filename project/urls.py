@@ -20,9 +20,9 @@ from django.urls import include, path
 # from homeschool.schools.views import app
 
 urlpatterns = [
+    path("", include("homeschool.core.urls")),
     path("office/", admin.site.urls),
     path("accounts/", include("allauth.urls")),
-    path("", include("homeschool.core.urls"), name="app"),
 ]
 
 # Enable the debug toolbar only in DEBUG mode.
