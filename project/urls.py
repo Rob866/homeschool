@@ -22,7 +22,7 @@ from django.urls import include, path
 urlpatterns = [
     path("office/", admin.site.urls),
     path("accounts/", include("allauth.urls")),
-    path("", include("homeschool.schools.urls"), name="app"),
+    path("", include("homeschool.core.urls"), name="app"),
 ]
 
 # Enable the debug toolbar only in DEBUG mode.
