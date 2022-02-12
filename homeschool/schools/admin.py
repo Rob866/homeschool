@@ -1,7 +1,10 @@
-# from django.contrib import admin
+from django.contrib import admin
 
-from .models import School
+from homeschool.schools.models import School
+
+# from .models import School
 
 
-class SchoolAdmin(School):
+@admin.register(School)
+class SchoolAdmin(admin.ModelAdmin):
     list_display = ("admin",)
