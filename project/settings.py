@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 
 # import django_heroku
+import django_heroku
 import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -163,16 +164,13 @@ ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_LOGOUT_REDIRECT_URL = "core:app"
+ACCOUNT_LOGOUT_REDIRECT_URL = "core:index"
 
 # django-waffle
 WAFFLE_FLAG_MODEL = "core.Flag"
 WAFFLE_CREATE_MISSING_FLAGS = True
 
-if "HEROKU" in os.environ:
-    import django_heroku
-
-    django_heroku.settings(locals(), secret_key=False)
+django_heroku.settings(locals(), secret_key=False)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
