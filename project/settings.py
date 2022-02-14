@@ -170,8 +170,8 @@ ACCOUNT_LOGOUT_REDIRECT_URL = "core:index"
 WAFFLE_FLAG_MODEL = "core.Flag"
 WAFFLE_CREATE_MISSING_FLAGS = True
 
-if "/home/rob" in os.environ["HOME"]:
-    django_heroku.settings(locals(), secret_key=False)
+# if "/home/rob" in os.environ["HOME"]:
+django_heroku.settings(locals(), secret_key=False, test_runner=False)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
