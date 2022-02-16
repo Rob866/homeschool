@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class School(models.Model):
@@ -8,5 +9,9 @@ class School(models.Model):
     admin = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        help_text="The school administrator",
+        help_text=_("The school administrator"),
     )
+
+    class Meta:
+        verbose_name = _("school")
+        verbose_name_plural = _("schools")
