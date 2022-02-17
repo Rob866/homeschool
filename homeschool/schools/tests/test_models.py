@@ -1,10 +1,40 @@
-from homeschool.schools.tests.factories import SchoolFactory
+from homeschool.schools.tests.factories import (
+    GradeLevelFactory,
+    SchoolFactory,
+    SchoolYearFactory,
+)
 from homeschool.test import TestCase
 
 
 class TestSchool(TestCase):
-    def test_school_has_admin(self):
+    def test_factory(self):
+        test_school = SchoolFactory()
+        self.assertIsNotNone(test_school)
+
+    def test_has_admin(self):
         """A school has an administrator."""
         user = self.make_user()
         school = SchoolFactory(admin=user)
         self.assertEqual(school.admin, user)
+
+
+class TestsSchoolYear(TestCase):
+    def test_factory(self):
+        school_year = SchoolYearFactory()
+        self.assertIsNotNone(school_year)
+
+    def test_has_school(self):
+        school = SchoolFactory()
+        school_year = SchoolYearFactory(school=school)
+        self.assertEqual(school_year.school, school)
+
+
+class TestGradeLavel(TestCase):
+    def test_factory(self):
+        grade_level = GradeLevelFactory()
+        self.assertIsNotNone(grade_level)
+
+    def test_has_school_year(self):
+        school_year = SchoolYearFactory()
+        grade_level = GradeLevelFactory(school_year=school_year)
+        self.assertEqual(grade_level.school_year, school_year)

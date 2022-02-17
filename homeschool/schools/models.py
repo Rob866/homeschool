@@ -15,3 +15,17 @@ class School(models.Model):
     class Meta:
         verbose_name = _("school")
         verbose_name_plural = _("schools")
+
+
+class SchoolYear(models.Model):
+    """A school year to bound start and end dates of the academic year"""
+
+    school = models.ForeignKey("schools.School", on_delete=models.CASCADE)
+    start_date = models.DateField()
+    end_date = models.DateField()
+
+
+class GradeLevel(models.Model):
+    """A student is in a grade level in a given school year"""
+
+    school_year = models.ForeignKey("schools.SchoolYear", on_delete=models.CASCADE)
