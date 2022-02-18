@@ -22,6 +22,8 @@ class TestsSchoolYear(TestCase):
     def test_factory(self):
         school_year = SchoolYearFactory()
         self.assertIsNotNone(school_year)
+        self.assertIsNotNone(school_year.start_date)
+        self.assertIsNotNone(school_year.end_date)
 
     def test_has_school(self):
         school = SchoolFactory()
@@ -33,6 +35,12 @@ class TestGradeLavel(TestCase):
     def test_factory(self):
         grade_level = GradeLevelFactory()
         self.assertIsNotNone(grade_level)
+        self.assertNotEqual(grade_level.name, "")
+
+    def test_has_name(self):
+        name = "Kindergarten"
+        grade_level = GradeLevelFactory(name=name)
+        self.assertEqual(grade_level.name, name)
 
     def test_has_school_year(self):
         school_year = SchoolYearFactory()
