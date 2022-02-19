@@ -1,12 +1,15 @@
+{% extends "base.html" %}
 {% load waffle_tags %}
+{% block content %}
+    {% flag signup_flag %}
+    <h2>Sign Up</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Sign Up</button>
+    </form>
 
-{% flag signup_flag %}
+    {% endflag %}
+{% endblock content %}
 
-<h2>Sign Up</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Sign Up</button>
-</form>
 
-{% endflag %}
