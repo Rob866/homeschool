@@ -26,7 +26,7 @@ jobs:
           python-version: '3.x'
           architecture: 'x64'
 
-       - name: Install packages
+      - name: Install packages
         run: |
           # Postgres dev headers for pg_config
           # libpq-dev
@@ -35,6 +35,9 @@ jobs:
           sudo apt install \
           libpq-dev \
           python3-dev graphviz libgraphviz-dev
+      
+      - name: Install packages
+        run: pip install -r requirements.txt -r requirements-dev.txt   
 
       - name: Test it
         run: python manage.py test
