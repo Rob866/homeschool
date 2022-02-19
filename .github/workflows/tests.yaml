@@ -26,8 +26,13 @@ jobs:
           python-version: '3.x'
           architecture: 'x64'
 
-      - name: Install packages
-        run: pip install -r requirements.txt -r requirements-dev.txt
+       - name: Install packages
+        run: |
+          sudo apt install \
+          # Postgres dev headers for pg_config
+          libpq-dev \
+          # Graphviz support
+          python3-dev graphviz libgraphviz-dev
 
       - name: Test it
         run: python manage.py test
