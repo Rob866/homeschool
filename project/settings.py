@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "homeschool.core",
     "homeschool.schools",
     "homeschool.users",
+    "homeschool.courses",
 ]
 
 MIDDLEWARE = [
