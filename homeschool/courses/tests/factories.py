@@ -7,7 +7,7 @@ class CourseFactory(factory.django.DjangoModelFactory):
 
     name = factory.Sequence(lambda n: f"Course {n}")
     grade_level = factory.SubFactory(
-        "homeschools.schools.tests.factories.GradeLevelFactory"
+        "homeschool.schools.tests.factories.GradeLevelFactory"
     )
 
 

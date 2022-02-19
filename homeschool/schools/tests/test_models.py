@@ -31,7 +31,7 @@ class TestsSchoolYear(TestCase):
         self.assertEqual(school_year.school, school)
 
 
-class TestGradeLavel(TestCase):
+class TestGradeLevel(TestCase):
     def test_factory(self):
         grade_level = GradeLevelFactory()
         self.assertIsNotNone(grade_level)
