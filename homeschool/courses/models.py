@@ -9,7 +9,7 @@ from django.utils.translation import gettext_lazy as _
 class Course(models.Model):
     """A course is a container for tasks in a certain subject area."""
 
-    name = models.CharField(max_length=256)
+    name = models.CharField(max_length=256, verbose_name=_("name"))
     grade_level = models.ForeignKey("schools.GradeLevel", on_delete=models.CASCADE)
 
     class Meta:
