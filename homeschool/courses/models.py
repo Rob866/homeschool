@@ -27,10 +27,13 @@ class CourseTask(models.Model):
         "courses.Course", on_delete=models.CASCADE, verbose_name="curso"
     )
     description = models.TextField(verbose_name="descripción")
+    duration = models.PositiveIntegerField(
+        verbose_name="duración", help_text="Se espera que la duración este en minutos"
+    )
 
     class Meta:
         verbose_name = "Tarea del Curso"
         verbose_name_plural = "Tareas de los Cursos"
 
     def __str__(self):
-        return self.name
+        return self.description

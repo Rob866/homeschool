@@ -31,12 +31,12 @@
           </div>
           <form method="POST" action="{% url 'account_logout' %}">
             {% csrf_token %}
-            <button class="hover:underline font-light" type="submit">Log Out</button>
+            <button class="hover:underline font-light" type="submit">Salir</button>
           </form>
         {% else %}
-          <a class="hover:underline font-light" href="{% url 'account_login' %}">Log In</a>
+          <a class="hover:underline font-light" href="{% url 'account_login' %}">Ingresar</a>
           {% flag signup_flag %}
-            <a class="hover:underline ml-0 sm:ml-4 my-2 font-light" href="{% url 'account_signup' %}">Sign Up</a>
+            <a class="hover:underline ml-0 sm:ml-4 my-2 font-light" href="{% url 'account_signup' %}">Salir</a>
           {% endflag %}
         {% endif %}
       </div>

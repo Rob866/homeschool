@@ -8,7 +8,6 @@ from homeschool.test import TestCase
 class TestCourse(TestCase):
     def test_factory(self):
         course = CourseFactory()
-
         self.assertIsNotNone(course)
         self.assertNotEqual(course.name, "")
 
@@ -50,3 +49,8 @@ class TestCourseTask(TestCase):
         task = CourseTaskFactory(description=description)
 
         self.assertEqual(task.description, description)
+
+    def test_has_duration(self):
+        duration = 30
+        task = CourseTaskFactory(duration=duration)
+        self.assertEqual(task.duration, duration)
