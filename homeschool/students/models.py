@@ -4,7 +4,9 @@ from django.db import models
 class Student(models.Model):
     first_name = models.CharField(verbose_name="Nombre(s)", max_length=64)
     last_name = models.CharField(verbose_name="Apellidos", max_length=64)
-    school = models.ForeignKey("schools.School", on_delete=models.CASCADE)
+    school = models.ForeignKey(
+        "schools.School", on_delete=models.CASCADE, verbose_name="escuela"
+    )
 
     class Meta:
         verbose_name = "Estudiante"
