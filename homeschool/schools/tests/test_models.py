@@ -46,3 +46,7 @@ class TestGradeLevel(TestCase):
         school_year = SchoolYearFactory()
         grade_level = GradeLevelFactory(school_year=school_year)
         self.assertEqual(grade_level.school_year, school_year)
+
+    def test_str(self):
+        grade_level = GradeLevelFactory()
+        self.assertEqual(str(grade_level), grade_level.name)
