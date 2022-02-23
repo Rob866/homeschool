@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from homeschool.students.models import Enrollment, Student
+from homeschool.students.models import Coursework, Enrollment, Student
 
 # Register your models here.
 
@@ -13,4 +13,9 @@ class StudentAdmin(admin.ModelAdmin):
 
 @admin.register(Enrollment)
 class EnrollmentAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Coursework)
+class CourseworkAdmin(admin.ModelAdmin):
     pass

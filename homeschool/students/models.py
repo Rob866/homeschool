@@ -33,3 +33,18 @@ class Enrollment(models.Model):
     class Meta:
         verbose_name = "Inscripción"
         verbose_name_plural = "Inscripciones"
+
+
+class Coursework(models.Model):
+
+    student = models.ForeignKey(
+        Student, on_delete=models.CASCADE, verbose_name="estudiante"
+    )
+    course_task = models.ForeignKey(
+        "courses.CourseTask", on_delete=models.CASCADE, verbose_name="tarea del curso"
+    )
+    complete_date = models.DateField(verbose_name="fecha de finalización")
+
+    class Meta:
+        verbose_name = "Trabajo finalizado"
+        verbose_name_plural = "Trabajos finalizados"
