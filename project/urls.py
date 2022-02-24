@@ -17,7 +17,9 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
 
-# from homeschool.schools.views import app
+admin.site.site_header = "Homeschool"
+admin.site.site_title = "Educación en el hogar"
+admin.site.index_title = "Educación en el hogar"
 
 urlpatterns = [
     path("", include("homeschool.core.urls")),
