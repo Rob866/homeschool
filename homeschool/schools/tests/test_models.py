@@ -1,3 +1,4 @@
+from homeschool.schools.models import SchoolYear
 from homeschool.schools.tests.factories import (
     GradeLevelFactory,
     SchoolFactory,
@@ -29,6 +30,27 @@ class TestsSchoolYear(TestCase):
         school = SchoolFactory()
         school_year = SchoolYearFactory(school=school)
         self.assertEqual(school_year.school, school)
+
+    def test_has_day_of_week(self):
+        days_of_week = SchoolYear.LUNES + SchoolYear.MARTES
+        school_year = SchoolYearFactory(days_of_week=days_of_week)
+        self.assertEqual(school_year.days_of_week, days_of_week)
+
+    def test_runs_on(self):
+        school_year = SchoolYearFactory(days_of_week=SchoolYear.LUNES)
+        self.assertTrue(school_year.runs_on(SchoolYear.LUNES))
+        self.assertFalse(school_year.runs_on(SchoolYear.MARTES))
+
+    def test_days_of_week_default(self):
+        school_year = SchoolYear()
+        self.assertTrue(school_year.runs_on(SchoolYear.LUNES))
+        self.assertTrue(school_year.runs_on(SchoolYear.MARTES))
+        self.assertTrue(school_year.runs_on(SchoolYear.MIERCOLES))
+        self.assertTrue(school_year.runs_on(SchoolYear.JUEVES))
+        self.assertTrue(school_year.runs_on(SchoolYear.VIERNES))
+
+        self.assertFalse(school_year.runs_on(SchoolYear.SABADO))
+        self.assertFalse(school_year.runs_on(SchoolYear.DOMINGO))
 
 
 class TestGradeLevel(TestCase):

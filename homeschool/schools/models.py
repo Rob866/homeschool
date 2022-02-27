@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.db import models
 
+from homeschool.core.models import DaysOfWeekModel
+
 # from django.utils.translation import gettext_lazy as _
 
 
@@ -18,7 +20,8 @@ class School(models.Model):
         verbose_name_plural = "Escuelas"
 
 
-class SchoolYear(models.Model):
+class SchoolYear(DaysOfWeekModel):
+
     """A school year to bound start and end dates of the academic year"""
 
     school = models.ForeignKey(
