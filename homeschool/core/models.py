@@ -27,3 +27,10 @@ class DaysOfWeekModel(models.Model):
 
     def runs_on(self, day):
         return bool(self.days_of_week & day)
+
+    @property
+    def total_week_days(self):
+        total = 0
+        for shift_bits in range(7):
+            total += (self.days_of_week >> shift_bits) % 2
+        return total

@@ -29,6 +29,20 @@ class TestCourse(TestCase):
         course = CourseFactory(days_of_week=days_of_week)
         self.assertEqual(course.days_of_week, days_of_week)
 
+    def test_total_week_days(self):
+        course = CourseFactory(
+            days_of_week=Course.LUNES + Course.MARTES + Course.MIERCOLES
+        )
+        self.assertEqual(course.total_week_days, 3)
+        self.assertNotEqual(course.total_week_days, 4)
+        self.assertNotEqual(course.total_week_days, 5)
+
+    def test_total_week_days_default(self):
+        course = CourseFactory()
+        self.assertEqual(course.total_week_days, 5)
+        self.assertNotEqual(course.total_week_days, 6)
+        self.assertNotEqual(course.total_week_days, 7)
+
 
 class TestCourseTask(TestCase):
     def test_factory(self):
