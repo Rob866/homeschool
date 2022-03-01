@@ -5,6 +5,7 @@ from homeschool.schools.tests.factories import (
     SchoolFactory,
     SchoolYearFactory,
 )
+from homeschool.students.tests.factories import StudentFactory
 from homeschool.test import TestCase
 
 
@@ -12,6 +13,12 @@ class TestSchool(TestCase):
     def test_factory(self):
         test_school = SchoolFactory()
         self.assertIsNotNone(test_school)
+
+    def test_has_students(self):
+        school = SchoolFactory()
+        student = StudentFactory(school=school)
+
+        self.assertEqual(list(school.students.all()), [student])
 
     def test_has_admin(self):
         """A school has an administrator."""
