@@ -12,7 +12,10 @@ class Course(DaysOfWeekModel):
 
     name = models.CharField(max_length=256, verbose_name="nombre")
     grade_level = models.ForeignKey(
-        "schools.GradeLevel", on_delete=models.CASCADE, verbose_name="grado escolar"
+        "schools.GradeLevel",
+        on_delete=models.CASCADE,
+        verbose_name="grado escolar",
+        related_name="courses",
     )
 
     class Meta:

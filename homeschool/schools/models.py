@@ -40,7 +40,10 @@ class GradeLevel(models.Model):
 
     name = models.CharField(verbose_name="nombre", max_length=128)
     school_year = models.ForeignKey(
-        "schools.SchoolYear", on_delete=models.CASCADE, verbose_name="año escolar"
+        "schools.SchoolYear",
+        on_delete=models.CASCADE,
+        verbose_name="año escolar",
+        related_name="grade_levels",
     )
 
     class Meta:
