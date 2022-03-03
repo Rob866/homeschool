@@ -4,6 +4,7 @@ from unittest import mock
 import pytz
 from dateutil.relativedelta import MO, SU, relativedelta
 
+from homeschool.students.tests.factories import StudentFactory
 from homeschool.test import TestCase
 
 
@@ -43,3 +44,12 @@ class TestApp(TestCase):
         with self.login(user):
             self.get("core:app")
         self.assertContext("sunday", sunday)
+
+    def test_has_students(self):
+        user = self.make_user()
+        student = StudentFactory(school=user.school)
+
+        with self.login(user), self.assertNumQueries(4):
+            self.get("core:app")
+
+        self.assertContext("students", [student])
