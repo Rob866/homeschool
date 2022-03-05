@@ -5,13 +5,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <title>{% block head_title %}Homeschool App{% endblock %}</title>
+  <title>{% block head_title %}Homeschool App {% endblock %}</title>
 </head>
 
 
 <body class="min-h-screen flex flex-col">
   
   {% include "nav.html" %}
+  {% block sub_nav %}{% endblock %}
   <div class="container mx-auto p-8 flex-grow">
         {% block content %}{% endblock %}
   </div>

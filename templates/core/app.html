@@ -1,4 +1,5 @@
-{% extends "base.html" %}
+{% extends "app_base.html" %}
+{% block head_title %}{% if user.first_name %}Escuela de: {{ user.first_name }}{% else %}Homeschool App{% endif %}{% endblock %}
 
 {% block content %}
 
