@@ -6,8 +6,19 @@
 <h1>App</h1>
   <h1 class="font-thin text-2xl text-blue-900 mb-8">Dia  {{ monday|date:"l, N j" }} &ndash; {{ sunday|date:"l, N j" }}</h1>
 
-  {% for student in students %}
-    <h2 class="font-thin text-xl text-blue-900">{{ student.first_name }}</h2>
+  {% for schedule in schedules %}
+    <h2 class="font-thin text-xl text-blue-900">{{ schedule.student.first_name }}</h2>
+    <h2 class="font-thin text-xl text-blue-900">Cursos:</h2> 
+    {% if schedule.courses %}
+          {% for course in schedule.courses %}
+          <ul>
+            <li> <h3 class="font-thin text-xl text-blue-700">{{ course.name }}</h3></li>
+          </ul>
+          {%endfor %}
+
+    {% else %}
+          N/A
+    {%endif%}
   {% endfor %}
  
 {% endblock content %}

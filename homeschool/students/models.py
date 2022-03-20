@@ -19,6 +19,17 @@ class Student(models.Model):
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
 
+    def get_courses(self, school_year):
+        enrollment = Enrollment.objects.filter(
+            student=self, grade_level__in=school_year.grade_levels.all()
+        ).first()
+
+        if enrollment:
+            for grade_level in school_year.grade_levels.all():
+                if grade_level.id == enrollment.grade_level_id:
+                    return list(grade_level.courses.all())
+        return []
+
     def __str__(self):
         return self.full_name
 

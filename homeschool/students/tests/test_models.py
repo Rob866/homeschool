@@ -1,4 +1,4 @@
-from homeschool.courses.tests.factories import CourseTaskFactory
+from homeschool.courses.tests.factories import CourseFactory, CourseTaskFactory
 from homeschool.schools.tests.factories import GradeLevelFactory, SchoolFactory
 from homeschool.students.tests.factories import (
     CourseworkFactory,
@@ -33,6 +33,15 @@ class TestStudent(TestCase):
     def test_has_full_name(self):
         student = StudentFactory()
         self.assertEqual(student.full_name, f"{student.first_name} {student.last_name}")
+
+    def test_get_courses(self):
+        enrollment = EnrollmentFactory()
+        student = enrollment.student
+        grade_level = enrollment.grade_level
+        course = CourseFactory(grade_level=grade_level)
+
+        courses = student.get_courses(grade_level.school_year)
+        self.assertEqual(list(courses), [course])
 
     def test_str(self):
         student = StudentFactory()
